@@ -1,0 +1,1221 @@
+Name:             blackbox-exporter-6b79c4588b-d5qg6
+Namespace:        monitoring
+Priority:         0
+Service Account:  blackbox-exporter
+Node:             fepv-lnxclna-d23.fepoc.com/172.29.150.99
+Start Time:       Fri, 04 Nov 2022 11:24:26 -0400
+Labels:           app.kubernetes.io/component=exporter
+                  app.kubernetes.io/name=blackbox-exporter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=0.19.0
+                  pod-template-hash=6b79c4588b
+Annotations:      kubectl.kubernetes.io/default-container: blackbox-exporter
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/blackbox-exporter-6b79c4588b
+Containers:
+  blackbox-exporter:
+    Container ID:  
+    Image:         quay.io/prometheus/blackbox-exporter:v0.19.0
+    Image ID:      
+    Port:          19115/TCP
+    Host Port:     0/TCP
+    Args:
+      --config.file=/etc/blackbox_exporter/config.yml
+      --web.listen-address=:19115
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:        10m
+      memory:     20Mi
+    Environment:  <none>
+    Mounts:
+      /etc/blackbox_exporter/ from config (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-56gjf (ro)
+  module-configmap-reloader:
+    Container ID:  
+    Image:         jimmidyson/configmap-reload:v0.5.0
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --webhook-url=http://localhost:19115/-/reload
+      --volume-dir=/etc/blackbox_exporter/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:        10m
+      memory:     20Mi
+    Environment:  <none>
+    Mounts:
+      /etc/blackbox_exporter/ from config (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-56gjf (ro)
+  kube-rbac-proxy:
+    Container ID:  
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      
+    Port:          9115/TCP
+    Host Port:     0/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=:9115
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:19115/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:        10m
+      memory:     20Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-56gjf (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      blackbox-exporter-configuration
+    Optional:  false
+  kube-api-access-56gjf:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/blackbox-exporter-6b79c4588b-d5qg6 to fepv-lnxclna-d23.fepoc.com
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:58548->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:56888->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40138->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:39724->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40154->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:34104->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40286->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40802->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40392->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m21s (x152 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:43244->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             grafana-7fd69887fb-5vbcc
+Namespace:        monitoring
+Priority:         0
+Service Account:  grafana
+Node:             fepv-lnxclna-d23.fepoc.com/172.29.150.99
+Start Time:       Fri, 04 Nov 2022 11:24:26 -0400
+Labels:           app.kubernetes.io/component=grafana
+                  app.kubernetes.io/name=grafana
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=8.3.3
+                  pod-template-hash=7fd69887fb
+Annotations:      checksum/grafana-config: 8a40383dc6577c8b30c5bf006ba9ab7e
+                  checksum/grafana-dashboardproviders: cf4ac6c4d98eb91172b3307d9127acc5
+                  checksum/grafana-datasources: 2e669e49f44117d62bc96ea62c2d39d3
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/grafana-7fd69887fb
+Containers:
+  grafana:
+    Container ID:   
+    Image:          grafana/grafana:8.3.3
+    Image ID:       
+    Port:           3000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  200Mi
+    Requests:
+      cpu:        100m
+      memory:     100Mi
+    Readiness:    http-get http://:http/api/health delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/grafana from grafana-config (rw)
+      /etc/grafana/provisioning/dashboards from grafana-dashboards (rw)
+      /etc/grafana/provisioning/datasources from grafana-datasources (rw)
+      /grafana-dashboard-definitions/0/alertmanager-overview from grafana-dashboard-alertmanager-overview (rw)
+      /grafana-dashboard-definitions/0/apiserver from grafana-dashboard-apiserver (rw)
+      /grafana-dashboard-definitions/0/cluster-total from grafana-dashboard-cluster-total (rw)
+      /grafana-dashboard-definitions/0/controller-manager from grafana-dashboard-controller-manager (rw)
+      /grafana-dashboard-definitions/0/k8s-resources-cluster from grafana-dashboard-k8s-resources-cluster (rw)
+      /grafana-dashboard-definitions/0/k8s-resources-namespace from grafana-dashboard-k8s-resources-namespace (rw)
+      /grafana-dashboard-definitions/0/k8s-resources-node from grafana-dashboard-k8s-resources-node (rw)
+      /grafana-dashboard-definitions/0/k8s-resources-pod from grafana-dashboard-k8s-resources-pod (rw)
+      /grafana-dashboard-definitions/0/k8s-resources-workload from grafana-dashboard-k8s-resources-workload (rw)
+      /grafana-dashboard-definitions/0/k8s-resources-workloads-namespace from grafana-dashboard-k8s-resources-workloads-namespace (rw)
+      /grafana-dashboard-definitions/0/kubelet from grafana-dashboard-kubelet (rw)
+      /grafana-dashboard-definitions/0/namespace-by-pod from grafana-dashboard-namespace-by-pod (rw)
+      /grafana-dashboard-definitions/0/namespace-by-workload from grafana-dashboard-namespace-by-workload (rw)
+      /grafana-dashboard-definitions/0/node-cluster-rsrc-use from grafana-dashboard-node-cluster-rsrc-use (rw)
+      /grafana-dashboard-definitions/0/node-rsrc-use from grafana-dashboard-node-rsrc-use (rw)
+      /grafana-dashboard-definitions/0/nodes from grafana-dashboard-nodes (rw)
+      /grafana-dashboard-definitions/0/persistentvolumesusage from grafana-dashboard-persistentvolumesusage (rw)
+      /grafana-dashboard-definitions/0/pod-total from grafana-dashboard-pod-total (rw)
+      /grafana-dashboard-definitions/0/prometheus from grafana-dashboard-prometheus (rw)
+      /grafana-dashboard-definitions/0/prometheus-remote-write from grafana-dashboard-prometheus-remote-write (rw)
+      /grafana-dashboard-definitions/0/proxy from grafana-dashboard-proxy (rw)
+      /grafana-dashboard-definitions/0/scheduler from grafana-dashboard-scheduler (rw)
+      /grafana-dashboard-definitions/0/workload-total from grafana-dashboard-workload-total (rw)
+      /var/lib/grafana from grafana-storage (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hvlv2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  grafana-storage:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  grafana-datasources:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  grafana-datasources
+    Optional:    false
+  grafana-dashboards:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboards
+    Optional:  false
+  grafana-dashboard-alertmanager-overview:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-alertmanager-overview
+    Optional:  false
+  grafana-dashboard-apiserver:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-apiserver
+    Optional:  false
+  grafana-dashboard-cluster-total:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-cluster-total
+    Optional:  false
+  grafana-dashboard-controller-manager:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-controller-manager
+    Optional:  false
+  grafana-dashboard-k8s-resources-cluster:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-k8s-resources-cluster
+    Optional:  false
+  grafana-dashboard-k8s-resources-namespace:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-k8s-resources-namespace
+    Optional:  false
+  grafana-dashboard-k8s-resources-node:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-k8s-resources-node
+    Optional:  false
+  grafana-dashboard-k8s-resources-pod:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-k8s-resources-pod
+    Optional:  false
+  grafana-dashboard-k8s-resources-workload:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-k8s-resources-workload
+    Optional:  false
+  grafana-dashboard-k8s-resources-workloads-namespace:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-k8s-resources-workloads-namespace
+    Optional:  false
+  grafana-dashboard-kubelet:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-kubelet
+    Optional:  false
+  grafana-dashboard-namespace-by-pod:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-namespace-by-pod
+    Optional:  false
+  grafana-dashboard-namespace-by-workload:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-namespace-by-workload
+    Optional:  false
+  grafana-dashboard-node-cluster-rsrc-use:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-node-cluster-rsrc-use
+    Optional:  false
+  grafana-dashboard-node-rsrc-use:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-node-rsrc-use
+    Optional:  false
+  grafana-dashboard-nodes:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-nodes
+    Optional:  false
+  grafana-dashboard-persistentvolumesusage:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-persistentvolumesusage
+    Optional:  false
+  grafana-dashboard-pod-total:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-pod-total
+    Optional:  false
+  grafana-dashboard-prometheus-remote-write:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-prometheus-remote-write
+    Optional:  false
+  grafana-dashboard-prometheus:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-prometheus
+    Optional:  false
+  grafana-dashboard-proxy:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-proxy
+    Optional:  false
+  grafana-dashboard-scheduler:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-scheduler
+    Optional:  false
+  grafana-dashboard-workload-total:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-dashboard-workload-total
+    Optional:  false
+  grafana-config:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  grafana-config
+    Optional:    false
+  kube-api-access-hvlv2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/grafana-7fd69887fb-5vbcc to fepv-lnxclna-d23.fepoc.com
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-k8s-resources-workload" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-prometheus-remote-write" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-nodes" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-k8s-resources-cluster" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-alertmanager-overview" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-k8s-resources-workloads-namespace" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m (x5 over 39m)      kubelet            (combined from similar events): MountVolume.SetUp failed for volume "grafana-dashboard-k8s-resources-workload" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m (x2 over 39m)      kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-cluster-total" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m (x2 over 39m)      kubelet            MountVolume.SetUp failed for volume "grafana-dashboards" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m (x2 over 39m)      kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-k8s-resources-pod" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedMount             39m                    kubelet            MountVolume.SetUp failed for volume "grafana-dashboard-k8s-resources-node" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53942->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:56910->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40118->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53762->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40132->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:50044->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:34148->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m19s (x145 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:43270->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             kube-state-metrics-55f67795cd-6nr2b
+Namespace:        monitoring
+Priority:         0
+Service Account:  kube-state-metrics
+Node:             fepv-lnxclna-d23.fepoc.com/172.29.150.99
+Start Time:       Fri, 04 Nov 2022 11:24:26 -0400
+Labels:           app.kubernetes.io/component=exporter
+                  app.kubernetes.io/name=kube-state-metrics
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=2.3.0
+                  pod-template-hash=55f67795cd
+Annotations:      kubectl.kubernetes.io/default-container: kube-state-metrics
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/kube-state-metrics-55f67795cd
+Containers:
+  kube-state-metrics:
+    Container ID:  
+    Image:         k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.3.0
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --host=127.0.0.1
+      --port=8081
+      --telemetry-host=127.0.0.1
+      --telemetry-port=8082
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     100m
+      memory:  250Mi
+    Requests:
+      cpu:        10m
+      memory:     190Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkddw (ro)
+  kube-rbac-proxy-main:
+    Container ID:  
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      
+    Port:          8443/TCP
+    Host Port:     0/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=:8443
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:8081/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     40m
+      memory:  40Mi
+    Requests:
+      cpu:        20m
+      memory:     20Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkddw (ro)
+  kube-rbac-proxy-self:
+    Container ID:  
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      
+    Port:          9443/TCP
+    Host Port:     0/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=:9443
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:8082/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:        10m
+      memory:     20Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mkddw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-mkddw:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/kube-state-metrics-55f67795cd-6nr2b to fepv-lnxclna-d23.fepoc.com
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53928->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:56928->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40168->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:39750->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40188->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:50096->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40302->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40776->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40394->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m12s (x147 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:41048->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             node-exporter-6wx7x
+Namespace:        monitoring
+Priority:         0
+Service Account:  node-exporter
+Node:             fepv-lnxclna-d23.fepoc.com/172.29.150.99
+Start Time:       Fri, 04 Nov 2022 11:24:27 -0400
+Labels:           app.kubernetes.io/component=exporter
+                  app.kubernetes.io/name=node-exporter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=1.3.1
+                  controller-revision-hash=565c758584
+                  pod-template-generation=1
+Annotations:      kubectl.kubernetes.io/default-container: node-exporter
+Status:           Pending
+IP:               172.29.150.99
+IPs:
+  IP:           172.29.150.99
+Controlled By:  DaemonSet/node-exporter
+Containers:
+  node-exporter:
+    Container ID:  
+    Image:         quay.io/prometheus/node-exporter:v1.3.1
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --web.listen-address=127.0.0.1:9100
+      --path.sysfs=/host/sys
+      --path.rootfs=/host/root
+      --no-collector.wifi
+      --no-collector.hwmon
+      --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/k3s/containerd/.+|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)
+      --collector.netclass.ignored-devices=^(veth.*|[a-f0-9]{15})$
+      --collector.netdev.device-exclude=^(veth.*|[a-f0-9]{15})$
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     250m
+      memory:  180Mi
+    Requests:
+      cpu:        102m
+      memory:     180Mi
+    Environment:  <none>
+    Mounts:
+      /host/root from root (ro)
+      /host/sys from sys (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-q74cq (ro)
+  kube-rbac-proxy:
+    Container ID:  
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      
+    Port:          9100/TCP
+    Host Port:     9100/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=[$(IP)]:9100
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:9100/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:     10m
+      memory:  20Mi
+    Environment:
+      IP:   (v1:status.podIP)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-q74cq (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  
+  root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  kube-api-access-q74cq:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 op=Exists
+                             node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/node-exporter-6wx7x to fepv-lnxclna-d23.fepoc.com
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53964->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:56942->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53708->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:39784->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40228->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:34124->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40280->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40758->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": dial tcp 142.251.163.82:443: i/o timeout
+  Warning  FailedCreatePodSandBox  4m15s (x145 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:41002->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             node-exporter-c6stz
+Namespace:        monitoring
+Priority:         0
+Service Account:  node-exporter
+Node:             fepv-lnxclna-d21.fepoc.com/172.29.150.101
+Start Time:       Fri, 04 Nov 2022 11:24:27 -0400
+Labels:           app.kubernetes.io/component=exporter
+                  app.kubernetes.io/name=node-exporter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=1.3.1
+                  controller-revision-hash=565c758584
+                  pod-template-generation=1
+Annotations:      kubectl.kubernetes.io/default-container: node-exporter
+Status:           Running
+IP:               172.29.150.101
+IPs:
+  IP:           172.29.150.101
+Controlled By:  DaemonSet/node-exporter
+Containers:
+  node-exporter:
+    Container ID:  containerd://fda459aa74fcdc9181d39ab6a694d4775b2774e8395fbd4a28fa7deb7c3a3617
+    Image:         quay.io/prometheus/node-exporter:v1.3.1
+    Image ID:      quay.io/prometheus/node-exporter@sha256:f2269e73124dd0f60a7d19a2ce1264d33d08a985aed0ee6b0b89d0be470592cd
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --web.listen-address=127.0.0.1:9100
+      --path.sysfs=/host/sys
+      --path.rootfs=/host/root
+      --no-collector.wifi
+      --no-collector.hwmon
+      --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/k3s/containerd/.+|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)
+      --collector.netclass.ignored-devices=^(veth.*|[a-f0-9]{15})$
+      --collector.netdev.device-exclude=^(veth.*|[a-f0-9]{15})$
+    State:          Running
+      Started:      Fri, 04 Nov 2022 11:24:28 -0400
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     250m
+      memory:  180Mi
+    Requests:
+      cpu:        102m
+      memory:     180Mi
+    Environment:  <none>
+    Mounts:
+      /host/root from root (ro)
+      /host/sys from sys (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-lfmt8 (ro)
+  kube-rbac-proxy:
+    Container ID:  containerd://5deb152733bf33f8ec5d07454e03ca519de2da9eaad0cdcb55446de3c7f0cbc2
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      quay.io/brancz/kube-rbac-proxy@sha256:b62289c3f3f883ee76dd4e8879042dd19abff743340e451cb59f9654fc472e4f
+    Port:          9100/TCP
+    Host Port:     9100/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=[$(IP)]:9100
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:9100/
+    State:          Running
+      Started:      Fri, 04 Nov 2022 11:24:41 -0400
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:     10m
+      memory:  20Mi
+    Environment:
+      IP:   (v1:status.podIP)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-lfmt8 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  
+  root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  kube-api-access-lfmt8:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 op=Exists
+                             node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  39m   default-scheduler  Successfully assigned monitoring/node-exporter-c6stz to fepv-lnxclna-d21.fepoc.com
+  Normal  Pulled     39m   kubelet            Container image "quay.io/prometheus/node-exporter:v1.3.1" already present on machine
+  Normal  Created    39m   kubelet            Created container node-exporter
+  Normal  Started    39m   kubelet            Started container node-exporter
+  Normal  Pulled     39m   kubelet            Container image "quay.io/brancz/kube-rbac-proxy:v0.11.0" already present on machine
+  Normal  Created    39m   kubelet            Created container kube-rbac-proxy
+  Normal  Started    39m   kubelet            Started container kube-rbac-proxy
+
+
+Name:             node-exporter-qwwz2
+Namespace:        monitoring
+Priority:         0
+Service Account:  node-exporter
+Node:             fepv-lnxclna-d24.fepoc.com/172.29.150.98
+Start Time:       Fri, 04 Nov 2022 11:24:27 -0400
+Labels:           app.kubernetes.io/component=exporter
+                  app.kubernetes.io/name=node-exporter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=1.3.1
+                  controller-revision-hash=565c758584
+                  pod-template-generation=1
+Annotations:      kubectl.kubernetes.io/default-container: node-exporter
+Status:           Running
+IP:               172.29.150.98
+IPs:
+  IP:           172.29.150.98
+Controlled By:  DaemonSet/node-exporter
+Containers:
+  node-exporter:
+    Container ID:  containerd://d021804dd22410175f2299f79828bb888c52469c91157fb42e34cf0d23631e7f
+    Image:         quay.io/prometheus/node-exporter:v1.3.1
+    Image ID:      quay.io/prometheus/node-exporter@sha256:f2269e73124dd0f60a7d19a2ce1264d33d08a985aed0ee6b0b89d0be470592cd
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --web.listen-address=127.0.0.1:9100
+      --path.sysfs=/host/sys
+      --path.rootfs=/host/root
+      --no-collector.wifi
+      --no-collector.hwmon
+      --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/k3s/containerd/.+|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)
+      --collector.netclass.ignored-devices=^(veth.*|[a-f0-9]{15})$
+      --collector.netdev.device-exclude=^(veth.*|[a-f0-9]{15})$
+    State:          Running
+      Started:      Fri, 04 Nov 2022 11:24:27 -0400
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     250m
+      memory:  180Mi
+    Requests:
+      cpu:        102m
+      memory:     180Mi
+    Environment:  <none>
+    Mounts:
+      /host/root from root (ro)
+      /host/sys from sys (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-pg2qx (ro)
+  kube-rbac-proxy:
+    Container ID:  containerd://480132ff1e063348aeeddb1a20577a328dfb1063107c56da0e552d6d69cdc809
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      quay.io/brancz/kube-rbac-proxy@sha256:b62289c3f3f883ee76dd4e8879042dd19abff743340e451cb59f9654fc472e4f
+    Port:          9100/TCP
+    Host Port:     9100/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=[$(IP)]:9100
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:9100/
+    State:          Running
+      Started:      Fri, 04 Nov 2022 11:24:38 -0400
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:     10m
+      memory:  20Mi
+    Environment:
+      IP:   (v1:status.podIP)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-pg2qx (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  
+  root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  kube-api-access-pg2qx:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 op=Exists
+                             node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  39m   default-scheduler  Successfully assigned monitoring/node-exporter-qwwz2 to fepv-lnxclna-d24.fepoc.com
+  Normal  Pulled     39m   kubelet            Container image "quay.io/prometheus/node-exporter:v1.3.1" already present on machine
+  Normal  Created    39m   kubelet            Created container node-exporter
+  Normal  Started    39m   kubelet            Started container node-exporter
+  Normal  Pulled     39m   kubelet            Container image "quay.io/brancz/kube-rbac-proxy:v0.11.0" already present on machine
+  Normal  Created    39m   kubelet            Created container kube-rbac-proxy
+  Normal  Started    39m   kubelet            Started container kube-rbac-proxy
+
+
+Name:             node-exporter-zqdq6
+Namespace:        monitoring
+Priority:         0
+Service Account:  node-exporter
+Node:             fepv-lnxclna-d22.fepoc.com/172.29.150.100
+Start Time:       Fri, 04 Nov 2022 11:24:27 -0400
+Labels:           app.kubernetes.io/component=exporter
+                  app.kubernetes.io/name=node-exporter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=1.3.1
+                  controller-revision-hash=565c758584
+                  pod-template-generation=1
+Annotations:      kubectl.kubernetes.io/default-container: node-exporter
+Status:           Pending
+IP:               172.29.150.100
+IPs:
+  IP:           172.29.150.100
+Controlled By:  DaemonSet/node-exporter
+Containers:
+  node-exporter:
+    Container ID:  
+    Image:         quay.io/prometheus/node-exporter:v1.3.1
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      --web.listen-address=127.0.0.1:9100
+      --path.sysfs=/host/sys
+      --path.rootfs=/host/root
+      --no-collector.wifi
+      --no-collector.hwmon
+      --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/k3s/containerd/.+|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)
+      --collector.netclass.ignored-devices=^(veth.*|[a-f0-9]{15})$
+      --collector.netdev.device-exclude=^(veth.*|[a-f0-9]{15})$
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     250m
+      memory:  180Mi
+    Requests:
+      cpu:        102m
+      memory:     180Mi
+    Environment:  <none>
+    Mounts:
+      /host/root from root (ro)
+      /host/sys from sys (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-z5gm2 (ro)
+  kube-rbac-proxy:
+    Container ID:  
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      
+    Port:          9100/TCP
+    Host Port:     9100/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=[$(IP)]:9100
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:9100/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:     10m
+      memory:  20Mi
+    Environment:
+      IP:   (v1:status.podIP)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-z5gm2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  
+  root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+  kube-api-access-z5gm2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 op=Exists
+                             node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/node-exporter-zqdq6 to fepv-lnxclna-d22.fepoc.com
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:52588->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:46034->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:52290->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:50650->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:48060->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:39500->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:43894->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:43368->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:46994->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m21s (x150 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:54426->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             prometheus-adapter-5565cc8d76-6x7xd
+Namespace:        monitoring
+Priority:         0
+Service Account:  prometheus-adapter
+Node:             fepv-lnxclna-d22.fepoc.com/172.29.150.100
+Start Time:       Fri, 04 Nov 2022 11:24:27 -0400
+Labels:           app.kubernetes.io/component=metrics-adapter
+                  app.kubernetes.io/name=prometheus-adapter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=0.9.1
+                  pod-template-hash=5565cc8d76
+Annotations:      <none>
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/prometheus-adapter-5565cc8d76
+Containers:
+  prometheus-adapter:
+    Container ID:  
+    Image:         k8s.gcr.io/prometheus-adapter/prometheus-adapter:v0.9.1
+    Image ID:      
+    Port:          6443/TCP
+    Host Port:     0/TCP
+    Args:
+      --cert-dir=/var/run/serving-cert
+      --config=/etc/adapter/config.yaml
+      --logtostderr=true
+      --metrics-relist-interval=1m
+      --prometheus-url=http://prometheus-k8s.monitoring.svc:9090/
+      --secure-port=6443
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     250m
+      memory:  180Mi
+    Requests:
+      cpu:        102m
+      memory:     180Mi
+    Liveness:     http-get https://:https/livez delay=30s timeout=1s period=5s #success=1 #failure=5
+    Readiness:    http-get https://:https/readyz delay=30s timeout=1s period=5s #success=1 #failure=5
+    Environment:  <none>
+    Mounts:
+      /etc/adapter from config (rw)
+      /tmp from tmpfs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-kxmnt (ro)
+      /var/run/serving-cert from volume-serving-cert (rw)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  tmpfs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  volume-serving-cert:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      adapter-config
+    Optional:  false
+  kube-api-access-kxmnt:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/prometheus-adapter-5565cc8d76-6x7xd to fepv-lnxclna-d22.fepoc.com
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:52610->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:46042->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:52312->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:50630->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:48046->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:39486->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:43906->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:56618->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:47010->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m26s (x150 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.100:54380->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             prometheus-adapter-5565cc8d76-wn5dj
+Namespace:        monitoring
+Priority:         0
+Service Account:  prometheus-adapter
+Node:             fepv-lnxclna-d23.fepoc.com/172.29.150.99
+Start Time:       Fri, 04 Nov 2022 11:24:27 -0400
+Labels:           app.kubernetes.io/component=metrics-adapter
+                  app.kubernetes.io/name=prometheus-adapter
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=0.9.1
+                  pod-template-hash=5565cc8d76
+Annotations:      <none>
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/prometheus-adapter-5565cc8d76
+Containers:
+  prometheus-adapter:
+    Container ID:  
+    Image:         k8s.gcr.io/prometheus-adapter/prometheus-adapter:v0.9.1
+    Image ID:      
+    Port:          6443/TCP
+    Host Port:     0/TCP
+    Args:
+      --cert-dir=/var/run/serving-cert
+      --config=/etc/adapter/config.yaml
+      --logtostderr=true
+      --metrics-relist-interval=1m
+      --prometheus-url=http://prometheus-k8s.monitoring.svc:9090/
+      --secure-port=6443
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     250m
+      memory:  180Mi
+    Requests:
+      cpu:        102m
+      memory:     180Mi
+    Liveness:     http-get https://:https/livez delay=30s timeout=1s period=5s #success=1 #failure=5
+    Readiness:    http-get https://:https/readyz delay=30s timeout=1s period=5s #success=1 #failure=5
+    Environment:  <none>
+    Mounts:
+      /etc/adapter from config (rw)
+      /tmp from tmpfs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-v8k4d (ro)
+      /var/run/serving-cert from volume-serving-cert (rw)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  tmpfs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  volume-serving-cert:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      adapter-config
+    Optional:  false
+  kube-api-access-v8k4d:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/prometheus-adapter-5565cc8d76-wn5dj to fepv-lnxclna-d23.fepoc.com
+  Warning  FailedMount             39m (x2 over 39m)      kubelet            MountVolume.SetUp failed for volume "config" : failed to sync configmap cache: timed out waiting for the condition
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:54006->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:56956->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53724->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:39794->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40244->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:34110->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40332->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": dial tcp 142.251.163.82:443: i/o timeout
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:39620->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m25s (x144 over 36m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:43224->142.251.163.82:443: read: connection reset by peer
+
+
+Name:             prometheus-operator-6dc9f66cb7-rmrbb
+Namespace:        monitoring
+Priority:         0
+Service Account:  prometheus-operator
+Node:             fepv-lnxclna-d23.fepoc.com/172.29.150.99
+Start Time:       Fri, 04 Nov 2022 11:24:28 -0400
+Labels:           app.kubernetes.io/component=controller
+                  app.kubernetes.io/name=prometheus-operator
+                  app.kubernetes.io/part-of=kube-prometheus
+                  app.kubernetes.io/version=0.53.1
+                  pod-template-hash=6dc9f66cb7
+Annotations:      kubectl.kubernetes.io/default-container: prometheus-operator
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/prometheus-operator-6dc9f66cb7
+Containers:
+  prometheus-operator:
+    Container ID:  
+    Image:         quay.io/prometheus-operator/prometheus-operator:v0.53.1
+    Image ID:      
+    Port:          8080/TCP
+    Host Port:     0/TCP
+    Args:
+      --kubelet-service=kube-system/kubelet
+      --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.53.1
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  200Mi
+    Requests:
+      cpu:        100m
+      memory:     100Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sc2gc (ro)
+  kube-rbac-proxy:
+    Container ID:  
+    Image:         quay.io/brancz/kube-rbac-proxy:v0.11.0
+    Image ID:      
+    Port:          8443/TCP
+    Host Port:     0/TCP
+    Args:
+      --logtostderr
+      --secure-listen-address=:8443
+      --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      --upstream=http://127.0.0.1:8080/
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     20m
+      memory:  40Mi
+    Requests:
+      cpu:        10m
+      memory:     20Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sc2gc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-sc2gc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              kubernetes.io/os=linux
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                    From               Message
+  ----     ------                  ----                   ----               -------
+  Normal   Scheduled               39m                    default-scheduler  Successfully assigned monitoring/prometheus-operator-6dc9f66cb7-rmrbb to fepv-lnxclna-d23.fepoc.com
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53994->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  39m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40100->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:53740->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40120->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:50060->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  38m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40236->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40750->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:40322->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  37m                    kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:38372->142.251.163.82:443: read: connection reset by peer
+  Warning  FailedCreatePodSandBox  4m14s (x148 over 37m)  kubelet            (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to get sandbox image "k8s.gcr.io/pause:3.2": failed to pull image "k8s.gcr.io/pause:3.2": failed to pull and unpack image "k8s.gcr.io/pause:3.2": failed to resolve reference "k8s.gcr.io/pause:3.2": failed to do request: Head "https://us-east4-docker.pkg.dev/v2/k8s-artifacts-prod/images/pause/manifests/3.2": read tcp 172.29.150.99:41018->142.251.163.82:443: read: connection reset by peer
